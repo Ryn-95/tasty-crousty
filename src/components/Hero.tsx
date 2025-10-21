@@ -8,8 +8,10 @@ const Hero = () => {
     offset: ['start start', 'end start']
   })
   
-  const y = useTransform(scrollYProgress, [0, 1], [0, -100])
+  const y = useTransform(scrollYProgress, [0, 1], [0, -150])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
+  const rotateX = useTransform(scrollYProgress, [0, 0.5], [0, 5])
 
   const scrollToOrder = () => {
     document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' })
@@ -130,44 +132,121 @@ const Hero = () => {
               </p>
             </motion.div>
 
-            {/* Bouton Commander propre et moderne */}
+            {/* Badges premium */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12"
+            >
+              {[
+                { icon: '⚡', text: 'Livraison 15min', color: 'from-yellow-400 to-orange-500' },
+                { icon: '🔥', text: '100% Frais', color: 'from-red-400 to-pink-500' },
+                { icon: '⭐', text: 'Note 4.9/5', color: 'from-cyan-400 to-blue-500' }
+              ].map((badge, index) => (
+                <motion.div
+                  key={badge.text}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  className={`flex items-center gap-2 px-4 py-2 bg-gradient-to-r ${badge.color} rounded-full text-white font-semibold text-sm shadow-lg backdrop-blur-sm border border-white/20`}
+                >
+                  <span className="text-lg">{badge.icon}</span>
+                  <span>{badge.text}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Bouton Commander ultra-premium avec effets multiples */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
               className="relative z-10"
             >
               <motion.button
                 onClick={scrollToOrder}
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: '0 10px 40px rgba(255,255,255,0.3)'
+                whileHover={{ scale: 1.08, rotate: [0, -1, 1, 0] }}
+                whileTap={{ scale: 0.92 }}
+                className="group relative bg-gradient-to-r from-white via-gray-50 to-white text-midnight px-14 py-6 rounded-full font-bebas text-2xl md:text-3xl tracking-widest font-black shadow-2xl border-2 border-white/30 overflow-hidden magnetic-hover wave-effect"
+                style={{
+                  boxShadow: '0 20px 60px rgba(255,94,170,0.3), 0 10px 30px rgba(94,233,255,0.2), inset 0 1px 1px rgba(255,255,255,0.8)'
                 }}
-                whileTap={{ scale: 0.95 }}
-                animate={{
-                  boxShadow: [
-                    '0 5px 20px rgba(255,255,255,0.2)',
-                    '0 8px 30px rgba(255,255,255,0.3)',
-                    '0 5px 20px rgba(255,255,255,0.2)'
-                  ]
-                }}
-                transition={{
-                  boxShadow: { duration: 3, repeat: Infinity }
-                }}
-                className="bg-gradient-to-r from-white to-gray-100 text-midnight font-bebas text-2xl md:text-3xl tracking-wider px-12 py-4 rounded-full shadow-xl border-2 border-turquoiseBeach/50 hover:border-turquoiseBeach transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-white relative overflow-hidden"
                 aria-label="Commander maintenant sur Uber Eats"
               >
-                {/* Effet hover subtil */}
+                {/* Fond animé multicouche */}
                 <motion.div
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: '100%' }}
-                  transition={{ duration: 0.8 }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-turquoiseBeach/10 to-transparent"
+                  className="absolute inset-0 bg-gradient-to-r from-roseMiami/10 via-turquoiseBeach/10 to-sunsetOrange/10"
+                  animate={{
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  style={{ backgroundSize: '200% 100%' }}
                 />
                 
-                <span className="relative z-10 font-bold">
+                {/* Effet de brillance qui traverse */}
+                <motion.div
+                  animate={{ x: ['-200%', '200%'] }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatDelay: 1,
+                    ease: "easeInOut"
+                  }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent transform skew-x-12"
+                />
+
+                {/* Particules autour du bouton */}
+                {[...Array(6)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1 h-1 bg-gradient-to-r from-roseMiami to-turquoiseBeach rounded-full"
+                    style={{
+                      left: `${i * 16}%`,
+                      top: `${i % 2 === 0 ? '-4px' : 'calc(100% + 4px)'}`,
+                    }}
+                    animate={{
+                      y: i % 2 === 0 ? [-10, 0, -10] : [10, 0, 10],
+                      opacity: [0, 1, 0],
+                      scale: [0, 1.5, 0],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: i * 0.2,
+                      ease: "easeInOut"
+                    }}
+                  />
+                ))}
+                
+                <span className="relative z-10 flex items-center gap-3 font-black">
+                  <motion.span
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    🚀
+                  </motion.span>
                   COMMANDER
+                  <motion.span
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    →
+                  </motion.span>
                 </span>
+
+                {/* Cercles concentriques au hover */}
+                <motion.div
+                  className="absolute inset-0 rounded-full border-2 border-roseMiami/0 group-hover:border-roseMiami/50"
+                  initial={{ scale: 1, opacity: 0 }}
+                  whileHover={{ scale: 1.2, opacity: [0, 1, 0] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                />
               </motion.button>
             </motion.div>
 
@@ -188,36 +267,90 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Colonne droite - Image lifestyle sans div blanche */}
+          {/* Colonne droite - Image lifestyle avec effets 3D premium */}
           <motion.div 
-            className="relative order-1 lg:order-2"
-            style={{ y, opacity }}
+            className="relative order-1 lg:order-2 perspective-1000"
+            style={{ y, opacity, scale, rotateX }}
           >
+            {/* Particules flottantes autour de l'image */}
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-gradient-to-r from-roseMiami to-turquoiseBeach rounded-full blur-sm"
+                style={{
+                  left: `${10 + (i * 12)}%`,
+                  top: `${15 + (i % 3) * 25}%`,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  x: [0, Math.sin(i) * 20, 0],
+                  opacity: [0.3, 0.8, 0.3],
+                  scale: [1, 1.5, 1],
+                }}
+                transition={{
+                  duration: 4 + i * 0.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.3
+                }}
+              />
+            ))}
+
             <motion.div
-              initial={{ x: 120, opacity: 0, rotate: 6 }}
-              animate={{ x: 0, opacity: 1, rotate: 0 }}
+              initial={{ x: 120, opacity: 0, rotateY: 15 }}
+              animate={{ x: 0, opacity: 1, rotateY: 0 }}
               transition={{ 
                 type: 'spring', 
                 stiffness: 80, 
                 damping: 14,
                 delay: 0.4
               }}
-              className="relative"
+              className="relative transform-gpu"
+              whileHover={{ 
+                scale: 1.02,
+                rotateY: 2,
+                rotateX: -2,
+                transition: { duration: 0.3 }
+              }}
             >
-              {/* Image lifestyle flottante */}
+              {/* Aura lumineuse animée */}
               <motion.div
-                animate={{ y: [0, -6, 0] }}
+                className="absolute -inset-8 bg-gradient-to-r from-roseMiami/30 via-turquoiseBeach/30 to-sunsetOrange/30 rounded-full blur-3xl"
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.6, 0.3],
+                  rotate: [0, 180, 360],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+
+              {/* Image lifestyle flottante avec effet 3D */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
                 transition={{ 
                   duration: 6, 
                   repeat: Infinity, 
                   ease: 'easeInOut' 
                 }}
-                className="relative"
+                className="relative transform-gpu"
+                style={{
+                  transformStyle: 'preserve-3d',
+                }}
               >
+                {/* Ombre portée douce */}
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-black/20 blur-2xl rounded-full" />
+                
                 <img
                   src="/assets/dish-lifestyle.webp.png"
                   alt="Style de vie avec Tasty Crousty - Street food Miami"
-                  className="w-full h-auto object-contain shadow-2xl scale-110 lg:scale-125"
+                  className="w-full h-auto object-contain drop-shadow-2xl scale-110 lg:scale-125 relative z-10"
+                  style={{
+                    filter: 'drop-shadow(0 20px 60px rgba(255,94,170,0.3)) drop-shadow(0 10px 30px rgba(94,233,255,0.2))',
+                  }}
                   loading="eager"
                 />
                 

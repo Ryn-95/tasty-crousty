@@ -354,4 +354,247 @@ section {
 
 .scroll-snap-start {
   scroll-snap-align: start;
+}
+
+/* === EFFETS PREMIUM ULTRA-MODERNES === */
+
+/* Glassmorphism avancé avec couches multiples */
+.glass-ultra {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.15),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Effet néon multicouche */
+.neon-glow {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 40px currentColor,
+    0 0 80px currentColor;
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes neon-pulse {
+  0%, 100% { 
+    filter: brightness(1); 
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 40px currentColor;
+  }
+  50% { 
+    filter: brightness(1.2); 
+    text-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 40px currentColor,
+      0 0 80px currentColor,
+      0 0 120px currentColor;
+  }
+}
+
+/* Gradient animé pour texte */
+.gradient-text {
+  background: linear-gradient(
+    45deg,
+    var(--roseMiami),
+    var(--turquoiseBeach),
+    var(--sunsetOrange),
+    var(--violetSoflo)
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Effet holographique */
+.holographic {
+  position: relative;
+  overflow: hidden;
+}
+
+.holographic::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(255, 94, 170, 0.3),
+    transparent,
+    rgba(94, 233, 255, 0.3),
+    transparent,
+    rgba(255, 139, 94, 0.3),
+    transparent
+  );
+  animation: holographic-rotate 6s linear infinite;
+}
+
+@keyframes holographic-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Effet de vagues pour boutons */
+.wave-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.wave-effect:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Effet de particules scintillantes */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+.sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Effet miroir liquide */
+.liquid-mirror {
+  position: relative;
+}
+
+.liquid-mirror::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: inherit;
+  filter: blur(10px);
+  opacity: 0.3;
+  transform: scaleY(-1);
+  mask-image: linear-gradient(to bottom, black, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+/* Effet de profondeur 3D */
+.depth-3d {
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+
+.depth-3d-child {
+  transform: translateZ(50px);
+}
+
+/* Effet de dégradé animé pour fond */
+@keyframes gradient-wave {
+  0%, 100% {
+    background-position: 0% 50%;
+    background-size: 200% 200%;
+  }
+  50% {
+    background-position: 100% 50%;
+    background-size: 250% 250%;
+  }
+}
+
+.animated-gradient-bg {
+  background: linear-gradient(
+    -45deg,
+    var(--roseMiami),
+    var(--violetSoflo),
+    var(--turquoiseBeach),
+    var(--sunsetOrange)
+  );
+  background-size: 400% 400%;
+  animation: gradient-wave 15s ease infinite;
+}
+
+/* Effet magnétique pour les boutons */
+@media (hover: hover) {
+  .magnetic-hover {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .magnetic-hover:hover {
+    transform: scale(1.05) translateY(-2px);
+  }
+}
+
+/* Bordure lumineuse animée */
+@keyframes border-glow {
+  0%, 100% {
+    border-color: var(--roseMiami);
+    box-shadow: 0 0 10px var(--roseMiami);
+  }
+  33% {
+    border-color: var(--turquoiseBeach);
+    box-shadow: 0 0 10px var(--turquoiseBeach);
+  }
+  66% {
+    border-color: var(--sunsetOrange);
+    box-shadow: 0 0 10px var(--sunsetOrange);
+  }
+}
+
+.animated-border {
+  animation: border-glow 3s ease-in-out infinite;
+}
+
+/* Effet de scan futuriste */
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scan-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--turquoiseBeach), transparent);
+  animation: scan-line 2s linear infinite;
+  opacity: 0.5;
 } 
