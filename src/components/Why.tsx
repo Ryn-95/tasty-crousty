@@ -9,7 +9,7 @@ interface FeatureProps {
   index: number
 }
 
-const Feature = ({ icon, title, description, delay, index }: FeatureProps): JSX.Element => {
+const Feature = ({ icon, title, description, delay, index }: FeatureProps) => {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-50px' })
 
@@ -89,7 +89,7 @@ const Feature = ({ icon, title, description, delay, index }: FeatureProps): JSX.
   )
 }
 
-const Why = (): JSX.Element => {
+const Why = () => {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
   

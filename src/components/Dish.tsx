@@ -1,7 +1,7 @@
-import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 
-const Dish = (): JSX.Element => {
+const Dish = () => {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
   const [isHovered, setIsHovered] = useState(false)
@@ -145,7 +145,7 @@ const Dish = (): JSX.Element => {
                   borderColor: 'border-sunsetOrange/20',
                   icon: '⭐'
                 }
-              ].map((item, index) => (
+              ].map((item) => (
                 <div
                   key={item.label}
                   className={`text-center p-6 rounded-2xl bg-gradient-to-br ${item.bgColor} border ${item.borderColor} backdrop-blur-sm cursor-pointer hover:-translate-y-2 hover:scale-105 transition-all duration-200`}

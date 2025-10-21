@@ -1,10 +1,9 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
-import { useRef, useState, type KeyboardEvent } from 'react'
+import { useRef, type KeyboardEvent } from 'react'
 
-const Order = (): JSX.Element => {
+const Order = () => {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
-  const [isHovered, setIsHovered] = useState(false)
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -19,7 +18,7 @@ const Order = (): JSX.Element => {
     window.open('https://www.ubereats.com/store/tasty-crousty', '_blank', 'noopener,noreferrer')
   }
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       handleOrderClick()
@@ -258,8 +257,6 @@ const Order = (): JSX.Element => {
               {/* Container principal avec glassmorphism avancé */}
               <motion.div
                 className="relative bg-white/[0.02] backdrop-blur-2xl border border-white/10 rounded-3xl p-10 overflow-hidden"
-                onHoverStart={() => setIsHovered(true)}
-                onHoverEnd={() => setIsHovered(false)}
                 whileHover={{ 
                   backgroundColor: 'rgba(255,255,255,0.05)',
                   borderColor: 'rgba(255,255,255,0.2)',

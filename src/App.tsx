@@ -10,7 +10,7 @@ import Why from '@/components/Why'
 import Order from '@/components/Order'
 import Footer from '@/components/Footer'
 
-function App(): JSX.Element {
+function App() {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const handleLoadComplete = () => {

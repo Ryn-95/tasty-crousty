@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
-const Navbar = (): JSX.Element => {
+const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -16,6 +16,7 @@ const Navbar = (): JSX.Element => {
   
   const opacity = useTransform(scrollY, [0, 50], [0.96, 1])
   const backdrop = useTransform(scrollY, [0, 100], [0.1, 0.9])
+  const backdropReduced = useTransform(scrollY, [0, 100], [0.08, 0.72])
   const y = useTransform(scrollY, [0, 100], [-5, 0])
   const scale = useTransform(scrollY, [0, 100], [1.02, 1])
 
@@ -104,7 +105,7 @@ const Navbar = (): JSX.Element => {
             style={{
               background: `linear-gradient(135deg, 
                 rgba(15, 23, 42, ${backdrop}) 0%,
-                rgba(30, 41, 59, ${backdrop * 0.8}) 50%,
+                rgba(30, 41, 59, ${backdropReduced}) 50%,
                 rgba(15, 23, 42, ${backdrop}) 100%)`
             }}
           />

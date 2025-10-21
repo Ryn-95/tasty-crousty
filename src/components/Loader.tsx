@@ -5,7 +5,7 @@ interface LoaderProps {
   onComplete: () => void
 }
 
-const Loader = ({ onComplete }: LoaderProps): JSX.Element => {
+const Loader = ({ onComplete }: LoaderProps) => {
   const [isVisible, setIsVisible] = useState(true)
   const [progress, setProgress] = useState(0)
 
