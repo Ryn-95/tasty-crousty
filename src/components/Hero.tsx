@@ -21,8 +21,12 @@ const Hero = () => {
     <section 
       ref={ref}
       id="hero" 
-      className="relative min-h-screen bg-miami-gradient flex items-center justify-center px-4 overflow-hidden scroll-snap-start"
+      className="relative min-h-screen animated-gradient-bg flex items-center justify-center px-4 overflow-hidden scroll-snap-start"
       aria-labelledby="hero-title"
+      style={{
+        background: 'linear-gradient(-45deg, #FF5EAA, #AE52FF, #5EE9FF, #FF8B5E)',
+        backgroundSize: '400% 400%',
+      }}
     >
       {/* Invisible title for accessibility */}
       <h2 id="hero-title" className="sr-only">
@@ -80,10 +84,27 @@ const Hero = () => {
                   initial={{ scale: 0.8 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.6, type: 'spring', stiffness: 200 }}
-                  className="text-7xl md:text-8xl lg:text-9xl tracking-wider text-white font-black mb-2"
+                  className="text-8xl md:text-9xl lg:text-[12rem] tracking-wider font-black mb-2"
                   style={{
-                    textShadow: '0 0 30px rgba(255,255,255,0.3), 0 0 60px rgba(94,233,255,0.2)',
-                    WebkitTextStroke: '1px rgba(255,255,255,0.1)'
+                    background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    textShadow: '0 8px 40px rgba(255,215,0,0.5), 0 0 80px rgba(255,165,0,0.3)',
+                    WebkitTextStroke: '3px #FF8B5E',
+                    filter: 'drop-shadow(0 10px 30px rgba(255,139,94,0.5))'
+                  }}
+                  animate={{
+                    textShadow: [
+                      '0 8px 40px rgba(255,215,0,0.5), 0 0 80px rgba(255,165,0,0.3)',
+                      '0 12px 60px rgba(255,215,0,0.8), 0 0 120px rgba(255,165,0,0.6)',
+                      '0 8px 40px rgba(255,215,0,0.5), 0 0 80px rgba(255,165,0,0.3)',
+                    ]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
                   }}
                 >
                   TASTY
@@ -109,7 +130,16 @@ const Hero = () => {
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 rounded-2xl"
                   />
                   
-                  <span className="relative text-5xl md:text-6xl lg:text-7xl font-black text-midnight tracking-wider px-6 py-3">
+                  <span className="relative text-6xl md:text-7xl lg:text-8xl font-black tracking-wider px-8 py-4"
+                    style={{
+                      background: 'linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      WebkitTextStroke: '2px #000000',
+                      filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.5))'
+                    }}
+                  >
                     CROUSTY
                   </span>
                 </motion.div>
@@ -123,12 +153,29 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="mb-12 relative z-10"
             >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 tracking-wide">
-                STREET FOOD MIAMI STYLE
-              </h2>
+              <motion.div 
+                className="inline-block bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white px-8 py-4 rounded-full mb-6 shadow-2xl"
+                animate={{
+                  scale: [1, 1.05, 1],
+                  rotate: [0, -2, 2, 0]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bebas font-black tracking-wider">
+                  🔥 STREET FOOD MIAMI STYLE 🔥
+                </h2>
+              </motion.div>
               
-              <p className="text-lg md:text-xl text-white/90 font-medium max-w-md mx-auto lg:mx-0">
-                Le goût authentique qui fait vibrer tes papilles
+              <p className="text-2xl md:text-3xl lg:text-4xl text-white font-black max-w-2xl mx-auto lg:mx-0 leading-tight"
+                style={{
+                  textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.3)'
+                }}
+              >
+                Le goût authentique qui fait <span className="text-yellow-300">VIBRER</span> tes papilles ! ⚡
               </p>
             </motion.div>
 
