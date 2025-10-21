@@ -82,29 +82,26 @@ const Hero = () => {
                 {/* TASTY - Blanc sur fond sombre, bien visible */}
                 <motion.div
                   initial={{ scale: 0.8 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.6, type: 'spring', stiffness: 200 }}
-                  className="text-8xl md:text-9xl lg:text-[12rem] tracking-wider font-black mb-2"
-                  style={{
-                    background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    textShadow: '0 8px 40px rgba(255,215,0,0.5), 0 0 80px rgba(255,165,0,0.3)',
-                    WebkitTextStroke: '3px #FF8B5E',
-                    filter: 'drop-shadow(0 10px 30px rgba(255,139,94,0.5))'
-                  }}
-                  animate={{
+                  animate={{ 
+                    scale: 1,
                     textShadow: [
                       '0 8px 40px rgba(255,215,0,0.5), 0 0 80px rgba(255,165,0,0.3)',
                       '0 12px 60px rgba(255,215,0,0.8), 0 0 120px rgba(255,165,0,0.6)',
                       '0 8px 40px rgba(255,215,0,0.5), 0 0 80px rgba(255,165,0,0.3)',
                     ]
                   }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
+                  transition={{ 
+                    scale: { duration: 0.6, type: 'spring', stiffness: 200 },
+                    textShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                  }}
+                  className="text-8xl md:text-9xl lg:text-[12rem] tracking-wider font-black mb-2"
+                  style={{
+                    background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    WebkitTextStroke: '3px #FF8B5E',
+                    filter: 'drop-shadow(0 10px 30px rgba(255,139,94,0.5))'
                   }}
                 >
                   TASTY
