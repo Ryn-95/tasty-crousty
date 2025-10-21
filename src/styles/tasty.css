@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&family=Brush+Script+MT:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --roseMiami: #FF5EAA;
+  --turquoiseBeach: #5EE9FF;
+  --violetSoflo: #AE52FF;
+  --sunsetOrange: #FF8B5E;
+  --midnight: #0A0120;
+  --bg-main: linear-gradient(135deg, var(--roseMiami) 0%, var(--turquoiseBeach) 100%);
+  --bg-dark: radial-gradient(circle at 50% 120%, var(--violetSoflo) 0%, #050015 90%);
+  --neon-shadow: 0 0 4px var(--roseMiami), 0 0 8px var(--roseMiami);
+}
+
+/* Mode sombre */
+.dark {
+  --bg-main: linear-gradient(135deg, var(--violetSoflo) 0%, var(--midnight) 100%);
+  --neon-shadow: 0 0 4px var(--sunsetOrange), 0 0 8px var(--sunsetOrange);
+}
+
+@keyframes flicker {
+  0%, 100%, 22%, 64% {
+    opacity: 1;
+  }
+  30%, 60% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.96);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(-5px) rotate(-1deg); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px var(--roseMiami), 0 0 40px var(--roseMiami); }
+  50% { box-shadow: 0 0 40px var(--roseMiami), 0 0 80px var(--roseMiami); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Désactive scroll-snap en mode reduced motion */
+  main {
+    scroll-snap-type: none !important;
+  }
+  
+  section {
+    scroll-snap-align: none !important;
+  }
+}
+
+/* Custom utilities */
+.bg-miami-gradient {
+  background: var(--bg-main);
+}
+
+.bg-dark-gradient {
+  background: var(--bg-dark);
+}
+
+.neon-text {
+  text-shadow: 
+    0 0 10px var(--roseMiami),
+    0 0 20px var(--roseMiami),
+    0 0 40px var(--roseMiami);
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-morphism {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Perspective pour effets 3D */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Animation classes */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--midnight);
+  color: white;
+  padding: 8px 16px;
+  z-index: 1000;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 6px;
+  box-shadow: 0 0 0 4px var(--roseMiami);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--midnight);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--roseMiami), var(--turquoiseBeach));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--turquoiseBeach), var(--roseMiami));
+}
+
+/* Focus styles pour l'accessibilité */
+.focus-visible\:ring-4:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 94, 170, 0.5);
+}
+
+/* Text selection */
+::selection {
+  background: var(--roseMiami);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--roseMiami);
+  color: white;
+}
+
+/* Loader styles */
+.loader-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid var(--roseMiami);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  filter: drop-shadow(0 0 10px var(--roseMiami));
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Section transitions */
+section {
+  scroll-snap-align: start;
+}
+
+/* Button hover effects */
+.btn-primary {
+  @apply bg-gradient-to-r from-roseMiami to-sunsetOrange text-white font-bebas tracking-wider px-8 py-4 rounded-full shadow-xl transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply scale-105;
+  box-shadow: 0 0 30px rgba(255, 139, 94, 0.4);
+}
+
+/* Dark mode adjustments */
+.dark .text-gray-700 {
+  color: rgb(156 163 175);
+}
+
+.dark .text-gray-600 {
+  color: rgb(107 114 128);
+}
+
+.dark .bg-white {
+  background-color: rgb(31 41 55);
+}
+
+.dark .border-white {
+  border-color: rgb(75 85 99);
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  .font-bebas {
+    letter-spacing: 0.1em;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .neon-text {
+    text-shadow: none;
+    color: var(--roseMiami);
+    font-weight: bold;
+  }
+  
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--midnight);
+  }
+}
+
+/* === UTILITAIRES PERSONNALISÉS === */
+.bg-gradient-radial {
+  background: radial-gradient(var(--tw-gradient-stops));
+}
+
+.bg-300\% {
+  background-size: 300% 100%;
+}
+
+/* Galerie dynamique */
+.gallery-cursor {
+  cursor: none;
+}
+
+@media (min-width: 768px) {
+  .gallery-cursor-palm {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle, #FF5EAA 2px, transparent 2px);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    filter: drop-shadow(0 0 8px #FF5EAA);
+    transition: transform 0.1s ease-out;
+  }
+  
+  .gallery-cursor-palm::before {
+    content: '🌴';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    font-size: 16px;
+    animation: float 2s ease-in-out infinite;
+  }
+}
+
+/* Kinetic Typography */
+.kinetic-text {
+  font-family: 'Brush Script MT', cursive;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+/* Performance optimizations */
+.gallery-item {
+  contain: layout style paint;
+  will-change: transform, opacity;
+}
+
+.gallery-item img {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Scroll snap enhancement */
+.scroll-snap-proximity {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+}
+
+.scroll-snap-start {
+  scroll-snap-align: start;
+} 
