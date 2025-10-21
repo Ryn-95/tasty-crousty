@@ -30,7 +30,7 @@ const ParallaxDish = () => {
         className="absolute inset-0 w-full h-full"
       >
         <img
-          src="/src/assets/tasty-banniere.png"
+          src="/assets/tasty-banniere.png"
           alt="Bannière Tasty Crousty"
           className="w-full h-full object-cover object-center filter brightness-110 contrast-105"
           loading="lazy"

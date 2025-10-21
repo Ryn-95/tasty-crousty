@@ -21,7 +21,7 @@ const slideData: SlideItem[] = [
   {
     title: 'Découvre le crousty',
     subtitle: 'Une texture parfaite qui révèle tous les arômes',
-    src: '/src/assets/right-slide.webp',
+    src: '/assets/right-slide.webp',
     alt: 'Plat croustillant aux textures dorées parfaites',
     direction: 'left',
     color: {
@@ -36,7 +36,7 @@ const slideData: SlideItem[] = [
   {
     title: 'Toujours plus savoureux',
     subtitle: 'Des saveurs authentiques qui éveillent vos sens',
-    src: '/src/assets/left-slide.webp',
+    src: '/assets/left-slide.webp',
     alt: 'Plat savoureux aux couleurs appétissantes',
     direction: 'right',
     color: {

@@ -535,7 +535,7 @@ const Order = () => {
                   transition={{ duration: 1, delay: 0.8 }}
                 >
                   <motion.img
-                    src="/src/assets/dish-angle.webp.png"
+                    src="/assets/dish-angle.webp.png"
                     alt="Vue d'angle du plat Tasty Crousty"
                     className="w-full h-auto object-contain relative z-10"
                     animate={{

@@ -215,7 +215,7 @@ const Hero = () => {
                 className="relative"
               >
                 <img
-                  src="/src/assets/dish-lifestyle.webp.png"
+                  src="/assets/dish-lifestyle.webp.png"
                   alt="Style de vie avec Tasty Crousty - Street food Miami"
                   className="w-full h-auto object-contain shadow-2xl scale-110 lg:scale-125"
                   loading="eager"

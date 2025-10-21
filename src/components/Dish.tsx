@@ -206,7 +206,7 @@ const Dish = () => {
               {/* Image */}
               <div className="relative">
                 <img
-                  src="/src/assets/hero-dish.webp.png"
+                  src="/assets/hero-dish.webp.png"
                   alt="Poulet croustillant signature mariné 24h"
                   className="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
                   loading="lazy"
