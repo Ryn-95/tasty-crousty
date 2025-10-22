@@ -46,6 +46,7 @@ function App() {
         }}
       >
         <Hero />
+        <Menu />
         <ParallaxDish />
         <AlternatingImages />
         <Dish />
