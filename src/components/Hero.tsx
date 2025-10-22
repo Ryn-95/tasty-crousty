@@ -10,8 +10,6 @@ const Hero = () => {
   
   const y = useTransform(scrollYProgress, [0, 1], [0, -150])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
-  const rotateX = useTransform(scrollYProgress, [0, 0.5], [0, 5])
 
   const scrollToOrder = () => {
     document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' })
