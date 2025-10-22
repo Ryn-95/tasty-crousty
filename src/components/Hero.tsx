@@ -8,8 +8,7 @@ const Hero = () => {
     offset: ['start start', 'end start']
   })
   
-  const y = useTransform(scrollYProgress, [0, 1], [0, -150])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const y = useTransform(scrollYProgress, [0, 1], [0, -100])
 
   const scrollToOrder = () => {
     document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' })
@@ -53,213 +52,80 @@ const Hero = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,640px)] gap-8 lg:gap-16 items-center">
           
-          {/* Colonne gauche - Contenu */}
-          <div className="text-center lg:text-left order-2 lg:order-1 relative">
-            {/* Effet de lumière subtil en arrière-plan */}
-            <motion.div
-              animate={{
-                opacity: [0.1, 0.3, 0.1],
-              }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -inset-10 bg-gradient-radial from-white/10 via-turquoiseBeach/5 to-transparent blur-2xl"
-              aria-hidden="true"
-            />
+          {/* Colonne gauche - Contenu ultra-minimaliste */}
+          <div className="text-center lg:text-left order-2 lg:order-1 space-y-8">
 
-            {/* Logo principal */}
+            {/* Logo minimaliste */}
             <motion.div
-              initial={{ opacity: 0, y: -30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-8 relative z-10"
+              transition={{ duration: 0.6 }}
             >
-              <h1 className="font-bebas">
-                {/* TASTY - Blanc sur fond sombre, bien visible */}
-                <motion.div
-                  initial={{ scale: 0.8 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.6, type: 'spring', stiffness: 200 }}
-                  className="text-7xl md:text-8xl lg:text-9xl tracking-wider text-white font-black mb-2"
-                  style={{
-                    textShadow: '0 0 30px rgba(255,255,255,0.3), 0 0 60px rgba(94,233,255,0.2)',
-                    WebkitTextStroke: '1px rgba(255,255,255,0.1)'
-                  }}
-                >
+              <h1 className="font-bebas leading-none">
+                <div className="text-8xl md:text-9xl lg:text-[10rem] text-white font-black tracking-tight">
                   TASTY
-                </motion.div>
-
-                {/* CROUSTY - Design moderne et lisible */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="relative inline-block"
-                >
-                  {/* Fond propre */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-white to-gray-50 rounded-2xl shadow-xl" />
-                  
-                  {/* Accent coloré */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-roseMiami/10 to-turquoiseBeach/10 rounded-2xl" />
-                  
-                  {/* Effet de brillance discret */}
-                  <motion.div
-                    animate={{ x: ['-100%', '100%'] }}
-                    transition={{ duration: 3, repeat: Infinity, repeatDelay: 3 }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 rounded-2xl"
-                  />
-                  
-                  <span className="relative text-5xl md:text-6xl lg:text-7xl font-black text-midnight tracking-wider px-6 py-3">
-                    CROUSTY
-                  </span>
-                </motion.div>
+                </div>
+                <div className="text-8xl md:text-9xl lg:text-[10rem] text-white font-black tracking-tight -mt-4">
+                  CROUSTY
+                </div>
               </h1>
             </motion.div>
 
-            {/* Tagline clean et impactant */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="mb-12 relative z-10"
-            >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 tracking-wide">
-                STREET FOOD MIAMI STYLE
-              </h2>
-              
-              <p className="text-lg md:text-xl text-white/90 font-medium max-w-md mx-auto lg:mx-0">
-                Le goût authentique qui fait vibrer tes papilles
-              </p>
-            </motion.div>
-
-            {/* Proposition de valeur simple et claire - style McDonald's */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-12"
-            >
-              {[
-                { icon: '⚡', text: 'Livraison 15min' },
-                { icon: '🔥', text: '100% Frais' },
-                { icon: '⭐', text: 'Note 4.9/5' }
-              ].map((item, index) => (
-                <motion.div
-                  key={item.text}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-                  className="flex items-center gap-3"
-                >
-                  <div className="text-3xl">{item.icon}</div>
-                  <div className="text-white font-bold text-lg">{item.text}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Offre spéciale visible - comme les promos McDo */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              className="bg-yellow-400 text-gray-900 px-8 py-4 rounded-2xl mb-8 inline-block shadow-2xl border-4 border-yellow-500"
-            >
-              <div className="font-black text-2xl md:text-3xl">
-                🎉 OFFRE DE LANCEMENT : -20% 🎉
-              </div>
-              <div className="font-semibold text-lg mt-1">
-                Code: TASTY20
-              </div>
-            </motion.div>
-
-            {/* Bouton CTA style McDonald's - Simple, gros, visible */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
-              className="flex gap-4 flex-wrap justify-center lg:justify-start"
-            >
-              {/* Bouton principal - énorme et visible */}
-              <motion.button
-                onClick={scrollToOrder}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-12 py-5 rounded-full font-black text-2xl shadow-2xl transition-all duration-200 border-4 border-yellow-500"
-                style={{
-                  boxShadow: '0 10px 40px rgba(255, 193, 7, 0.5)'
-                }}
-              >
-                🍗 COMMANDER MAINTENANT
-              </motion.button>
-
-              {/* Bouton secondaire */}
-              <motion.button
-                onClick={() => document.getElementById('dish')?.scrollIntoView({ behavior: 'smooth' })}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-10 py-5 rounded-full font-bold text-xl shadow-xl transition-all duration-200 border-2 border-white/40"
-              >
-                Voir le Menu
-              </motion.button>
-            </motion.div>
-
-            {/* Indicateur scroll discret */}
+            {/* Tagline ultra-simple */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.2 }}
-              className="absolute bottom-4 left-1/2 transform -translate-x-1/2"
+              transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-white/60 text-xs font-medium tracking-widest"
-              >
-                DÉCOUVRIR ↓
-              </motion.div>
+              <p className="text-3xl md:text-4xl text-white font-bold">
+                Le poulet le plus croustillant de Miami 🔥
+              </p>
             </motion.div>
+
+            {/* Infos simples */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-wrap gap-6 justify-center lg:justify-start text-white text-xl font-bold"
+            >
+              <span>⚡ Livraison 15min</span>
+              <span>•</span>
+              <span>🔥 100% Frais</span>
+              <span>•</span>
+              <span>⭐ 4.9/5</span>
+            </motion.div>
+
+            {/* Bouton ultra-minimaliste style McDo */}
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              onClick={scrollToOrder}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-16 py-6 rounded-full font-black text-3xl shadow-2xl transition-all"
+            >
+              COMMANDER 🍗
+            </motion.button>
           </div>
 
-          {/* Colonne droite - Image XXL style McDonald's/Burger King */}
+          {/* Image XXL ultra-simple */}
           <motion.div 
             className="relative order-1 lg:order-2"
-            style={{ y, opacity }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
           >
-            <motion.div
-              initial={{ x: 60, opacity: 0, scale: 0.8 }}
-              animate={{ x: 0, opacity: 1, scale: 1 }}
-              transition={{ 
-                type: 'spring', 
-                stiffness: 100, 
-                damping: 20,
-                delay: 0.3
+            <img
+              src="/assets/dish-lifestyle.webp.png"
+              alt="Poulet croustillant Tasty Crousty"
+              className="w-full h-auto scale-125 lg:scale-150"
+              style={{
+                filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.4))',
               }}
-              className="relative"
-            >
-              {/* Image énorme et centrale - comme les photos produits McDo */}
-              <motion.div
-                animate={{ y: [0, -15, 0] }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity, 
-                  ease: 'easeInOut' 
-                }}
-                className="relative"
-              >
-                <img
-                  src="/assets/dish-lifestyle.webp.png"
-                  alt="Poulet croustillant Tasty Crousty Miami"
-                  className="w-full h-auto object-contain scale-125 lg:scale-150"
-                  style={{
-                    filter: 'drop-shadow(0 30px 80px rgba(0,0,0,0.3))',
-                  }}
-                  loading="eager"
-                />
-                
-                {/* Badge lifestyle */}
-                <div className="absolute -top-2 -right-2 bg-sunsetOrange text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                  LIFESTYLE
-                </div>
-              </motion.div>
-            </motion.div>
+              loading="eager"
+            />
           </motion.div>
         </div>
 
