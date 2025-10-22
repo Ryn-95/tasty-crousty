@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Loader from '@/components/Loader'
 import Hero from '@/components/Hero'
-import MenuSection from '@/components/MenuSection'
+import Menu from '@/components/Menu'
 import ParallaxDish from '@/components/ParallaxDish'
 import AlternatingImages from '@/components/AlternatingImages'
 import Dish from '@/components/Dish'
@@ -46,7 +46,6 @@ function App() {
         }}
       >
         <Hero />
-        <MenuSection />
         <ParallaxDish />
         <AlternatingImages />
         <Dish />

@@ -21,12 +21,8 @@ const Hero = () => {
     <section 
       ref={ref}
       id="hero" 
-      className="relative min-h-screen animated-gradient-bg flex items-center justify-center px-4 overflow-hidden scroll-snap-start"
+      className="relative min-h-screen bg-miami-gradient flex items-center justify-center px-4 overflow-hidden scroll-snap-start"
       aria-labelledby="hero-title"
-      style={{
-        background: 'linear-gradient(-45deg, #FF5EAA, #AE52FF, #5EE9FF, #FF8B5E)',
-        backgroundSize: '400% 400%',
-      }}
     >
       {/* Invisible title for accessibility */}
       <h2 id="hero-title" className="sr-only">
@@ -82,26 +78,12 @@ const Hero = () => {
                 {/* TASTY - Blanc sur fond sombre, bien visible */}
                 <motion.div
                   initial={{ scale: 0.8 }}
-                  animate={{ 
-                    scale: 1,
-                    textShadow: [
-                      '0 8px 40px rgba(255,215,0,0.5), 0 0 80px rgba(255,165,0,0.3)',
-                      '0 12px 60px rgba(255,215,0,0.8), 0 0 120px rgba(255,165,0,0.6)',
-                      '0 8px 40px rgba(255,215,0,0.5), 0 0 80px rgba(255,165,0,0.3)',
-                    ]
-                  }}
-                  transition={{ 
-                    scale: { duration: 0.6, type: 'spring', stiffness: 200 },
-                    textShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-                  }}
-                  className="text-8xl md:text-9xl lg:text-[12rem] tracking-wider font-black mb-2"
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.6, type: 'spring', stiffness: 200 }}
+                  className="text-7xl md:text-8xl lg:text-9xl tracking-wider text-white font-black mb-2"
                   style={{
-                    background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    WebkitTextStroke: '3px #FF8B5E',
-                    filter: 'drop-shadow(0 10px 30px rgba(255,139,94,0.5))'
+                    textShadow: '0 0 30px rgba(255,255,255,0.3), 0 0 60px rgba(94,233,255,0.2)',
+                    WebkitTextStroke: '1px rgba(255,255,255,0.1)'
                   }}
                 >
                   TASTY
@@ -127,16 +109,7 @@ const Hero = () => {
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 rounded-2xl"
                   />
                   
-                  <span className="relative text-6xl md:text-7xl lg:text-8xl font-black tracking-wider px-8 py-4"
-                    style={{
-                      background: 'linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      WebkitTextStroke: '2px #000000',
-                      filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.5))'
-                    }}
-                  >
+                  <span className="relative text-5xl md:text-6xl lg:text-7xl font-black text-midnight tracking-wider px-6 py-3">
                     CROUSTY
                   </span>
                 </motion.div>
@@ -150,147 +123,83 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="mb-12 relative z-10"
             >
-              <motion.div 
-                className="inline-block bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white px-8 py-4 rounded-full mb-6 shadow-2xl"
-                animate={{
-                  scale: [1, 1.05, 1],
-                  rotate: [0, -2, 2, 0]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bebas font-black tracking-wider">
-                  🔥 STREET FOOD MIAMI STYLE 🔥
-                </h2>
-              </motion.div>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 tracking-wide">
+                STREET FOOD MIAMI STYLE
+              </h2>
               
-              <p className="text-2xl md:text-3xl lg:text-4xl text-white font-black max-w-2xl mx-auto lg:mx-0 leading-tight"
-                style={{
-                  textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.3)'
-                }}
-              >
-                Le goût authentique qui fait <span className="text-yellow-300">VIBRER</span> tes papilles ! ⚡
+              <p className="text-lg md:text-xl text-white/90 font-medium max-w-md mx-auto lg:mx-0">
+                Le goût authentique qui fait vibrer tes papilles
               </p>
             </motion.div>
 
-            {/* Badges premium */}
+            {/* Proposition de valeur simple et claire - style McDonald's */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12"
+              className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-12"
             >
               {[
-                { icon: '⚡', text: 'Livraison 15min', color: 'from-yellow-400 to-orange-500' },
-                { icon: '🔥', text: '100% Frais', color: 'from-red-400 to-pink-500' },
-                { icon: '⭐', text: 'Note 4.9/5', color: 'from-cyan-400 to-blue-500' }
-              ].map((badge, index) => (
+                { icon: '⚡', text: 'Livraison 15min' },
+                { icon: '🔥', text: '100% Frais' },
+                { icon: '⭐', text: 'Note 4.9/5' }
+              ].map((item, index) => (
                 <motion.div
-                  key={badge.text}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  key={item.text}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  className={`flex items-center gap-2 px-4 py-2 bg-gradient-to-r ${badge.color} rounded-full text-white font-semibold text-sm shadow-lg backdrop-blur-sm border border-white/20`}
+                  className="flex items-center gap-3"
                 >
-                  <span className="text-lg">{badge.icon}</span>
-                  <span>{badge.text}</span>
+                  <div className="text-3xl">{item.icon}</div>
+                  <div className="text-white font-bold text-lg">{item.text}</div>
                 </motion.div>
               ))}
             </motion.div>
 
-            {/* Bouton Commander ultra-premium avec effets multiples */}
+            {/* Offre spéciale visible - comme les promos McDo */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-              className="relative z-10"
+              transition={{ duration: 0.6, delay: 1 }}
+              className="bg-yellow-400 text-gray-900 px-8 py-4 rounded-2xl mb-8 inline-block shadow-2xl border-4 border-yellow-500"
             >
+              <div className="font-black text-2xl md:text-3xl">
+                🎉 OFFRE DE LANCEMENT : -20% 🎉
+              </div>
+              <div className="font-semibold text-lg mt-1">
+                Code: TASTY20
+              </div>
+            </motion.div>
+
+            {/* Bouton CTA style McDonald's - Simple, gros, visible */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              className="flex gap-4 flex-wrap justify-center lg:justify-start"
+            >
+              {/* Bouton principal - énorme et visible */}
               <motion.button
                 onClick={scrollToOrder}
-                whileHover={{ scale: 1.08, rotate: [0, -1, 1, 0] }}
-                whileTap={{ scale: 0.92 }}
-                className="group relative bg-gradient-to-r from-white via-gray-50 to-white text-midnight px-14 py-6 rounded-full font-bebas text-2xl md:text-3xl tracking-widest font-black shadow-2xl border-2 border-white/30 overflow-hidden magnetic-hover wave-effect"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-12 py-5 rounded-full font-black text-2xl shadow-2xl transition-all duration-200 border-4 border-yellow-500"
                 style={{
-                  boxShadow: '0 20px 60px rgba(255,94,170,0.3), 0 10px 30px rgba(94,233,255,0.2), inset 0 1px 1px rgba(255,255,255,0.8)'
+                  boxShadow: '0 10px 40px rgba(255, 193, 7, 0.5)'
                 }}
-                aria-label="Commander maintenant sur Uber Eats"
               >
-                {/* Fond animé multicouche */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-roseMiami/10 via-turquoiseBeach/10 to-sunsetOrange/10"
-                  animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                  style={{ backgroundSize: '200% 100%' }}
-                />
-                
-                {/* Effet de brillance qui traverse */}
-                <motion.div
-                  animate={{ x: ['-200%', '200%'] }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatDelay: 1,
-                    ease: "easeInOut"
-                  }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent transform skew-x-12"
-                />
+                🍗 COMMANDER MAINTENANT
+              </motion.button>
 
-                {/* Particules autour du bouton */}
-                {[...Array(6)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-1 h-1 bg-gradient-to-r from-roseMiami to-turquoiseBeach rounded-full"
-                    style={{
-                      left: `${i * 16}%`,
-                      top: `${i % 2 === 0 ? '-4px' : 'calc(100% + 4px)'}`,
-                    }}
-                    animate={{
-                      y: i % 2 === 0 ? [-10, 0, -10] : [10, 0, 10],
-                      opacity: [0, 1, 0],
-                      scale: [0, 1.5, 0],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: i * 0.2,
-                      ease: "easeInOut"
-                    }}
-                  />
-                ))}
-                
-                <span className="relative z-10 flex items-center gap-3 font-black">
-                  <motion.span
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    🚀
-                  </motion.span>
-                  COMMANDER
-                  <motion.span
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    →
-                  </motion.span>
-                </span>
-
-                {/* Cercles concentriques au hover */}
-                <motion.div
-                  className="absolute inset-0 rounded-full border-2 border-roseMiami/0 group-hover:border-roseMiami/50"
-                  initial={{ scale: 1, opacity: 0 }}
-                  whileHover={{ scale: 1.2, opacity: [0, 1, 0] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                />
+              {/* Bouton secondaire */}
+              <motion.button
+                onClick={() => document.getElementById('dish')?.scrollIntoView({ behavior: 'smooth' })}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-10 py-5 rounded-full font-bold text-xl shadow-xl transition-all duration-200 border-2 border-white/40"
+              >
+                Voir le Menu
               </motion.button>
             </motion.div>
 
@@ -311,89 +220,38 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Colonne droite - Image lifestyle avec effets 3D premium */}
+          {/* Colonne droite - Image XXL style McDonald's/Burger King */}
           <motion.div 
-            className="relative order-1 lg:order-2 perspective-1000"
-            style={{ y, opacity, scale, rotateX }}
+            className="relative order-1 lg:order-2"
+            style={{ y, opacity }}
           >
-            {/* Particules flottantes autour de l'image */}
-            {[...Array(8)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 bg-gradient-to-r from-roseMiami to-turquoiseBeach rounded-full blur-sm"
-                style={{
-                  left: `${10 + (i * 12)}%`,
-                  top: `${15 + (i % 3) * 25}%`,
-                }}
-                animate={{
-                  y: [0, -30, 0],
-                  x: [0, Math.sin(i) * 20, 0],
-                  opacity: [0.3, 0.8, 0.3],
-                  scale: [1, 1.5, 1],
-                }}
-                transition={{
-                  duration: 4 + i * 0.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: i * 0.3
-                }}
-              />
-            ))}
-
             <motion.div
-              initial={{ x: 120, opacity: 0, rotateY: 15 }}
-              animate={{ x: 0, opacity: 1, rotateY: 0 }}
+              initial={{ x: 60, opacity: 0, scale: 0.8 }}
+              animate={{ x: 0, opacity: 1, scale: 1 }}
               transition={{ 
                 type: 'spring', 
-                stiffness: 80, 
-                damping: 14,
-                delay: 0.4
+                stiffness: 100, 
+                damping: 20,
+                delay: 0.3
               }}
-              className="relative transform-gpu"
-              whileHover={{ 
-                scale: 1.02,
-                rotateY: 2,
-                rotateX: -2,
-                transition: { duration: 0.3 }
-              }}
+              className="relative"
             >
-              {/* Aura lumineuse animée */}
+              {/* Image énorme et centrale - comme les photos produits McDo */}
               <motion.div
-                className="absolute -inset-8 bg-gradient-to-r from-roseMiami/30 via-turquoiseBeach/30 to-sunsetOrange/30 rounded-full blur-3xl"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.6, 0.3],
-                  rotate: [0, 180, 360],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
-
-              {/* Image lifestyle flottante avec effet 3D */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
+                animate={{ y: [0, -15, 0] }}
                 transition={{ 
-                  duration: 6, 
+                  duration: 4, 
                   repeat: Infinity, 
                   ease: 'easeInOut' 
                 }}
-                className="relative transform-gpu"
-                style={{
-                  transformStyle: 'preserve-3d',
-                }}
+                className="relative"
               >
-                {/* Ombre portée douce */}
-                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-black/20 blur-2xl rounded-full" />
-                
                 <img
                   src="/assets/dish-lifestyle.webp.png"
-                  alt="Style de vie avec Tasty Crousty - Street food Miami"
-                  className="w-full h-auto object-contain drop-shadow-2xl scale-110 lg:scale-125 relative z-10"
+                  alt="Poulet croustillant Tasty Crousty Miami"
+                  className="w-full h-auto object-contain scale-125 lg:scale-150"
                   style={{
-                    filter: 'drop-shadow(0 20px 60px rgba(255,94,170,0.3)) drop-shadow(0 10px 30px rgba(94,233,255,0.2))',
+                    filter: 'drop-shadow(0 30px 80px rgba(0,0,0,0.3))',
                   }}
                   loading="eager"
                 />
